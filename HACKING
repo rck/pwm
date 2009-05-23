@@ -1,0 +1,10 @@
+Patches are gladly accepted for pwm code, please send them to
+dev.rck@gmail.com, or you can use github to send a pull request.
+ 
+The code tree is located at:
+  http://github.com/rck/pwm
+and can be cloned using git from:
+  git://github.com/rck/pwm.git
+ 
+If you have never used git before, there are some useful tutorials on
+the github.com web site to help you through the learning process.
