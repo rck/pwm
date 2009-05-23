@@ -1,0 +1,48 @@
+rck@laubbaum:~$ ./pwm.py --help
+Usage: pwm.py [options] [regex]...
+
+Options:
+  --version             show program's version number and exit
+  -h, --help            show this help message and exit
+  -c, --color           use colors for output
+  -d, --dump            dump database to plain text
+  -i, --init            initialize/create new database
+  -f FILE, --file=FILE  use FILE as password database
+  -t FILE, --text=FILE  generate password database from cleartext file
+  -k KEYID, --key=KEYID
+                        specify gpg key
+  -a, --add             add entry
+rck@laubbaum:~$ cat pwds.txt 
+URL     User    Password        Description
+www.gmx.net     foo     123     GMX Account
+www.gmail.com   bar     456     GMAIL Account
+rck@laubbaum:~$ ./pwm.py --text pwds.txt 
+Successfully wrote encrypted database
+rck@laubbaum:~$ ./pwm.py gmx
+GPG Password:
+gpg: encrypted with 4096-bit ELG-E key, ID XXXXXXXX, created 2009-05-18
+      "John Doe <foo@bar.net>"
+
+URL                     : www.gmx.net
+User                    : foo
+Password                : 123
+Description             : GMX Account
+rck@laubbaum:~$ ./pwm.py --add
+GPG Password:
+gpg: encrypted with 4096-bit ELG-E key, ID XXXXXXXX, created 2009-05-18
+      "John Doe <foo@bar.net>"
+
+Input your data (separated by <Tab>):
+URL     User    Password        Description
+www.bla.net     test    passw0rd        Bla Account
+Successfully wrote encrypted database
+rck@laubbaum:~$ ./pwm.py bla
+GPG Password:
+gpg: encrypted with 4096-bit ELG-E key, ID XXXXXXXX, created 2009-05-18
+      "John Doe <foo@bar.net>"
+
+URL                     : www.bla.net
+User                    : test
+Password                : passw0rd
+Description             : Bla Account
+
